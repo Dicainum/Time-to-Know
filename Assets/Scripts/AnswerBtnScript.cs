@@ -10,17 +10,7 @@ public class AnswerBtnScript : MonoBehaviour
     [SerializeField] private Button _answerBtn;
     [SerializeField] private TMP_Text _playerAnswerText;
     [SerializeField] private GameObject _questionWindow;
-
-    private void Awake()
-    {
-        GameObject _answerObj = GameObject.FindGameObjectWithTag("AnswerButton");
-
-        if (_answerObj != null)
-        {
-            _answerBtn = _answerObj.GetComponent<Button>();
-        }
-    }
-
+    
     public void AnswerBtnClicked()
     {
         if (!ifResetBeenCalled && _questionWindow.activeSelf)
@@ -34,11 +24,13 @@ public class AnswerBtnScript : MonoBehaviour
     public void ResetAnswerButton()
     {
         _answerBtn.interactable = true;
+        ifResetBeenCalled = false;
         _playerAnswerText.text = "Answer";
     }
 
     private void PlayerAnswering()
     {
+        _answerBtn.interactable = false;
         _playerAnswerText.text = "Answering..."; //playerName + 
     }
 }
