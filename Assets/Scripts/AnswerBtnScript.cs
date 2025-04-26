@@ -1,16 +1,17 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections;
+using Photon.Pun;
 
-public class AnswerBtnScript : MonoBehaviour
+
+public class AnswerBtnScript : MonoBehaviourPun
 {
     [SerializeField] private TimerScript _resetScript;
     private bool ifResetBeenCalled = false;
     [SerializeField] private Button _answerBtn;
     [SerializeField] private TMP_Text _playerAnswerText;
     [SerializeField] private GameObject _questionWindow;
-    
+    public int _playerID;
     public void AnswerBtnClicked()
     {
         if (!ifResetBeenCalled && _questionWindow.activeSelf)
@@ -30,6 +31,7 @@ public class AnswerBtnScript : MonoBehaviour
 
     private void PlayerAnswering()
     {
+        _playerID = PhotonNetwork.LocalPlayer.ActorNumber;
         _answerBtn.interactable = false;
         _playerAnswerText.text = "Answering..."; //playerName + 
     }

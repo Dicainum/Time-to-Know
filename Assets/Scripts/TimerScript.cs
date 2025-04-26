@@ -1,7 +1,8 @@
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
-public class TimerScript : MonoBehaviour
+public class TimerScript : MonoBehaviourPun
 {
     [SerializeField] private TextMeshProUGUI timerText;
     public float remainingTime;
@@ -10,6 +11,14 @@ public class TimerScript : MonoBehaviour
     private bool timerEnded = false;
     [SerializeField] private GameObject _questionWindow;
 
+    private void Start()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("PauseTimer", RpcTarget.All);
+        }
+    }
+
     private void FixedUpdate()
     {
         if (timerEnded) return;
@@ -17,6 +26,7 @@ public class TimerScript : MonoBehaviour
         remainingTime -= Time.deltaTime;
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
+        
         if (seconds > 0)
         {
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
@@ -24,30 +34,43 @@ public class TimerScript : MonoBehaviour
         else
         {
             timerText.text = "00:00";
-            TimerEnd();
+            TimerEnd(); // local call, no RPC needed
         }
-        
     }
 
+    [PunRPC]
     public void ResetTimer()
     {
         remainingTime = 11f;
         timerEnded = false;
     }
 
-    private void TimerEnd()
+    [PunRPC]
+    public void PauseTimer()
+    {
+        timerEnded = true;
+    }
+
+    [PunRPC]
+    public void ResumeTimer()
+    {
+        timerEnded = false;
+    }
+
+    private void TimerEnd() // Removed [PunRPC] because it's called locally
     {
         if (_randomScript != null && remainingTime <= -0.5f && !timerEnded)
         {
             timerEnded = true;
-            if(!_questionWindow.activeSelf)
+
+            if (!_questionWindow.activeSelf)
             {
                 _randomScript.SelectRandomButton();
             }
             else
             {
                 _questionWindow.SetActive(false);
-                ResetTimer();
+                ResetTimer(); // Local reset
                 _answerButtonScript.ResetAnswerButton();
             }
         }
