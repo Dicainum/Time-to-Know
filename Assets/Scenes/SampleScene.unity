@@ -698,6 +698,7 @@ MonoBehaviour:
   timerText: {fileID: 260994675}
   remainingTime: 5
   _randomScript: {fileID: 260994677}
+  _answerButtonScript: {fileID: 1102263014}
   _questionWindow: {fileID: 404610288}
 --- !u!114 &260994675
 MonoBehaviour:
@@ -2853,24 +2854,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3628140694556516327, guid: 232cd08734dabe240b1a36b85173b8eb, type: 3}
   m_PrefabInstance: {fileID: 1071580480}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1102263009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4579411966714110379, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
+--- !u!114 &1102263014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8270233783174198442, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
   m_PrefabInstance: {fileID: 3066377041011917685}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1102263014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102263009}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9bfcf745a6654b48969f7aa3f1b7ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resetScript: {fileID: 260994674}
 --- !u!224 &1127760831 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8631410512387931590, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
@@ -5945,6 +5939,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -61.339
       objectReference: {fileID: 0}
+    - target: {fileID: 8270233783174198442, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
+      propertyPath: _resetScript
+      value: 
+      objectReference: {fileID: 260994674}
     - target: {fileID: 8619674888609926785, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_Name
       value: ImageContainer
@@ -6060,10 +6058,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4579411966714110379, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1102263014}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

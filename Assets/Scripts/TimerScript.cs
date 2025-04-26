@@ -4,8 +4,9 @@ using UnityEngine;
 public class TimerScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private float remainingTime;
+    public float remainingTime;
     [SerializeField] private RandomBtnScript _randomScript;
+    [SerializeField] private AnswerBtnScript _answerButtonScript;
     private bool timerEnded = false;
     [SerializeField] private GameObject _questionWindow;
 
@@ -47,6 +48,7 @@ public class TimerScript : MonoBehaviour
             {
                 _questionWindow.SetActive(false);
                 ResetTimer();
+                _answerButtonScript.ResetAnswerButton();
             }
         }
     }

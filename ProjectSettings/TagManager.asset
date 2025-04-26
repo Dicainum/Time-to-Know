@@ -6,6 +6,7 @@ TagManager:
   tags:
   - QuestionWindow
   - QuestionButton
+  - AnswerButton
   layers:
   - Default
   - TransparentFX
