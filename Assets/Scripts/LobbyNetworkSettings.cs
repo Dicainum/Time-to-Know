@@ -10,8 +10,8 @@ public class LobbyNetworkSettings : MonoBehaviour
     [SerializeField] private GameObject hostPrefab;
 
 
-    [SerializeField] private GameObject playerCanvas;
-    [SerializeField] private GameObject hostCanvas;
+    public GameObject playerCanvas;
+    public GameObject hostCanvas;
     private List<Player> playersList;
     private List<NetworkPlayer> networkPlayers;
 
@@ -24,17 +24,13 @@ public class LobbyNetworkSettings : MonoBehaviour
         for (var i = 0; i < playersList.Count; i++)
         {
             if (playersList[i].ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber) continue;
-
+            
             GameObject prefabToSpawn = PhotonNetwork.IsMasterClient ? hostPrefab : playerPrefab;
-            GameObject canvasToAttach = PhotonNetwork.IsMasterClient ? hostCanvas : playerCanvas;
-
             var go = PhotonNetwork.Instantiate(prefabToSpawn.name, Vector3.zero, Quaternion.identity);
-            go.transform.SetParent(canvasToAttach.transform, false);
-
             networkPlayers.Add(go.GetComponent<NetworkPlayer>());
-            break;
         }
     }
+
 
     // public void KillPlayer(PhotonView playerView)
     // {

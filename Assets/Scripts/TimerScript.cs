@@ -52,10 +52,16 @@ public class TimerScript : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void ResumeTimer()
+    public void HostResumeTimer()
+    {
+        photonView.RPC("ResumeTimer", RpcTarget.All);
+    }
+
+    [PunRPC] public void ResumeTimer()
     {
         timerEnded = false;
     }
+    
 
     private void TimerEnd() // Removed [PunRPC] because it's called locally
     {

@@ -43,6 +43,12 @@ MonoBehaviour:
   - ResetTimer
   - ResumeTimer
   - TimerEnd
+  - ClickedStart
+  - DisablePause
+  - HostResumeTimer
+  - LoadQuestion
+  - NetworkLoadQuestion
+  - PlacePlayers
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

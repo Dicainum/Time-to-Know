@@ -9,6 +9,8 @@ TagManager:
   - AnswerButton
   - Bullet
   - Host
+  - PlayerCanvas
+  - HostCanvas
   layers:
   - Default
   - TransparentFX

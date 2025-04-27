@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 988899423682998718}
   - component: {fileID: 6164197845367097427}
   - component: {fileID: 3827241504129215362}
+  - component: {fileID: 4679782908804046503}
   m_Layer: 5
   m_Name: QuestionButton
   m_TagString: Untagged
@@ -124,7 +125,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3827241504129215362}
         m_TargetAssemblyTypeName: questionButton, Assembly-CSharp
-        m_MethodName: LoadQuestion
+        m_MethodName: NetworkLoadQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -148,6 +149,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 4023899516975466900}
   _questionSO: {fileID: 11400000, guid: 8cf327f0e98285a44977038744fec36b, type: 2}
+--- !u!114 &4679782908804046503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388573574915365692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6578045140382835998
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +263,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.8
+  m_fontSize: 58.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

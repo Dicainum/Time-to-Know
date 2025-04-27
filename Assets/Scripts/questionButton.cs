@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
-
-public class questionButton : MonoBehaviour
+using Photon.Pun;
+public class questionButton : MonoBehaviourPun
 {
     private int _pointsAmount;
     [SerializeField] private TMP_Text _text;
@@ -18,6 +18,12 @@ public class questionButton : MonoBehaviour
         Debug.Log(_questionWindow.name);
         _question = _questionWindow.GetComponent<QuestionWindow>();
     }
+    [PunRPC] public void NetworkLoadQuestion()
+    {
+        photonView.RPC("LoadQuestion", RpcTarget.All);
+    }
+
+    [PunRPC]
     public void LoadQuestion()
     {
         if (_questionSO == null)
@@ -29,7 +35,6 @@ public class questionButton : MonoBehaviour
         _question.question = _questionSO.question;
         _question.LoadQuestionWindow();
         gameObject.SetActive(false);
-
     }
 }
 

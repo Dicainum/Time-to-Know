@@ -19,6 +19,8 @@ public class AnswerBtnScript : MonoBehaviourPun
             _resetScript.ResetTimer();
             ifResetBeenCalled = true;
             PlayerAnswering();
+            _playerID = PhotonNetwork.LocalPlayer.ActorNumber;
+            Debug.Log($"Player ID: {_playerID}");
         }
     }
 

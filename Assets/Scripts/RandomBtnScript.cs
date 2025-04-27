@@ -1,26 +1,29 @@
 using UnityEngine;
-using UnityEngine.UI;
+using Photon.Pun;
 
-public class RandomBtnScript : MonoBehaviour
+public class RandomBtnScript : MonoBehaviourPunCallbacks
 {
     public void SelectRandomButton()
     {
-        GameObject[] buttons = GameObject.FindGameObjectsWithTag("QuestionButton");
-
-        if (buttons.Length == 0)
+        if (PhotonNetwork.IsMasterClient)
         {
-            Debug.LogWarning("Кнопки с тэгом QuestionButton не найдены.");
-            return;
-        }
+            GameObject[] buttons = GameObject.FindGameObjectsWithTag("QuestionButton");
 
-        int randomIndex = Random.Range(0, buttons.Length);
-        GameObject randomButton = buttons[randomIndex];
+            if (buttons.Length == 0)
+            {
+                //Debug.LogWarning("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ QuestionButton пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
+                return;
+            }
 
-        var buttonComponent = randomButton.GetComponent<questionButton>();
-        if (buttonComponent != null)
-        {
-            Debug.Log("Случайно выбрана кнопка: " + randomButton.name);
-            buttonComponent.LoadQuestion();
+            int randomIndex = Random.Range(0, buttons.Length);
+            GameObject randomButton = buttons[randomIndex];
+
+            var buttonComponent = randomButton.GetComponent<questionButton>();
+            if (buttonComponent != null)
+            {
+                //Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: " + randomButton.name);
+                buttonComponent.NetworkLoadQuestion();
+            }  
         }
     }
 }

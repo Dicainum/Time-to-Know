@@ -1,12 +1,13 @@
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
-public class PauseScriptController : MonoBehaviour
+public class PauseScriptController : MonoBehaviourPun
 {
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private string hostText;
     [SerializeField] private string playerText;
     [SerializeField] private TMP_Text text;
+    [SerializeField] private GameObject pauseCanvas;
     private void Awake()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -16,7 +17,21 @@ public class PauseScriptController : MonoBehaviour
         }
         else
         {
+            pauseButton.gameObject.SetActive(false);
             text.text = playerText;
         }
+    }
+
+    [PunRPC] public void ClickedStart()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("DisablePause", RpcTarget.All);
+        }
+    }
+
+    [PunRPC] public void DisablePause()
+    {
+        pauseCanvas.SetActive(false);
     }
 }
