@@ -13,16 +13,26 @@ public class AnswerBtnScript : MonoBehaviourPun
     [SerializeField] private TMP_Text _playerAnswerText;
     [SerializeField] private GameObject _questionWindow;
     public int _playerID;
-    [PunRPC] public void AnswerBtnClicked()
+    [PunRPC]
+    public void AnswerBtnClicked()
     {
         if (!ifResetBeenCalled && _questionWindow.activeSelf)
         {
             _resetScript.ResetTimer();
             ifResetBeenCalled = true;
+
             PlayerAnswering();
-            _playerID = PhotonNetwork.LocalPlayer.GetPlayerNumber();
-            photonView.RPC("BroadcastPlayerClicked", RpcTarget.MasterClient, _playerID);
-            Debug.Log($"Player ID: {_playerID}");
+
+            var localPlayerObject = PhotonView.Find(PhotonNetwork.LocalPlayer.ActorNumber);
+            Debug.LogError(localPlayerObject);
+            if (localPlayerObject != null)
+            {
+                var netPlayer = localPlayerObject.gameObject.GetComponent<NetworkPlayer>();
+                Debug.Log(netPlayer.gameObject.name);//TODO: Got NRE here
+                int playerID = netPlayer.PlayerID;
+
+                photonView.RPC("BroadcastPlayerClicked", RpcTarget.AllBufferedViaServer, playerID);
+            }
         }
     }
 
@@ -39,7 +49,6 @@ public class AnswerBtnScript : MonoBehaviourPun
 
     private void PlayerAnswering()
     {
-        _playerID = PhotonNetwork.LocalPlayer.ActorNumber;
         _answerBtn.interactable = false;
         _playerAnswerText.text = "Answering..."; //playerName + 
     }
