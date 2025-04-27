@@ -1,17 +1,16 @@
-using System;
 using System.Collections.Generic;
 using Photon.Pun;
-using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MenuLogic : MonoBehaviourPunCallbacks
 {
     
     private string gameVersion = "1";
+    [SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private GameObject _hostPrefab;
     [SerializeField] private int maxPlayers = 4;
     [SerializeField] private TMP_InputField createdRoomField;
     [SerializeField] private TMP_InputField roomToJoinField;
@@ -92,7 +91,25 @@ public class MenuLogic : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         if (PhotonNetwork.IsMasterClient)
+        {
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (player.IsMasterClient)
+                {
+                    PhotonNetwork.Instantiate(_hostPrefab.name, Vector3.zero, Quaternion.identity);
+                    Debug.LogError("Host Spawned");
+                }
+                else
+                {
+                    PhotonNetwork.Instantiate(_playerPrefab.name, Vector3.zero, Quaternion.identity);
+                }
+            }
+        }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
             PhotonNetwork.LoadLevel("GameScene");
+        }
     }
     public void JoinRoom()
     {

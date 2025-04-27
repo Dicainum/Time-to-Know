@@ -3782,7 +3782,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1130197633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1130197635}
+        m_TargetAssemblyTypeName: AddPoints, Assembly-CSharp
+        m_MethodName: AddPointsToPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1130197633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3833,8 +3845,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057553cdaede8804d8434bdc4686a2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _answerBtnScript: {fileID: 0}
+  _answerBtnScript: {fileID: 1102263014}
+  _question: {fileID: 3066377041011917686}
   points: 0
+  _playerID: 0
 --- !u!1001 &1167349400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4049,7 +4063,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!1 &1211876669
 GameObject:
@@ -4730,7 +4744,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!224 &1257633644
 RectTransform:
@@ -5768,11 +5782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2e886beba2f24d97393b753795f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6940119636158817422, guid: 72eebbea4181c4e47adf44ce316eb10b, type: 3}
-  hostPrefab: {fileID: 8261485441680283412, guid: bd3ac62d4e3b08e49b896b53f95f10c7, type: 3}
-  playerCanvas: {fileID: 500002805}
-  hostCanvas: {fileID: 886384592}
-  _restartBtn: {fileID: 0}
+  _playerCanvas: {fileID: 500002805}
+  _hostCanvas: {fileID: 886384592}
 --- !u!4 &1580604926
 Transform:
   m_ObjectHideFlags: 0
@@ -7498,6 +7509,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 368451585165707892, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
+      propertyPath: sceneViewId
+      value: 29
+      objectReference: {fileID: 0}
     - target: {fileID: 419142295507048672, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -76
@@ -7597,6 +7612,14 @@ PrefabInstance:
     - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.4994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511020034147705831, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
+      propertyPath: sceneViewId
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579411966714110379, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
+      propertyPath: m_Name
+      value: AnswerButton
       objectReference: {fileID: 0}
     - target: {fileID: 6588738375540392170, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_SizeDelta.x
@@ -7735,6 +7758,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
+--- !u!114 &3066377041011917686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 659138732388665587, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
+  m_PrefabInstance: {fileID: 3066377041011917685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa9f1003b1e4daa42ac2d419e889b50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

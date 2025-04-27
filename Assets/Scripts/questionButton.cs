@@ -3,7 +3,7 @@ using TMPro;
 using Photon.Pun;
 public class questionButton : MonoBehaviourPun
 {
-    private int _pointsAmount;
+    public int _pointsAmount;
     [SerializeField] private TMP_Text _text;
     [SerializeField] private QuestionSO _questionSO;
     private GameObject _questionWindow;
@@ -34,6 +34,7 @@ public class questionButton : MonoBehaviourPun
         _question._withImage = _questionSO.withImage;
         _question.question = _questionSO.question;
         _question.LoadQuestionWindow();
+        _question.points = _pointsAmount;
         gameObject.SetActive(false);
     }
 }

@@ -4,42 +4,24 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-public class LobbyNetworkSettings : MonoBehaviour
+public class LobbyNetworkSettings : MonoBehaviourPun
 {
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private GameObject hostPrefab;
-
-
-    public GameObject playerCanvas;
-    public GameObject hostCanvas;
-    private List<Player> playersList;
-    private List<NetworkPlayer> networkPlayers;
-
-    [SerializeField] private GameObject _restartBtn;
-    
-    private void Awake()
-    {
-        playersList = PhotonNetwork.PlayerList.ToList();
-        networkPlayers = new List<NetworkPlayer>();
-        for (var i = 0; i < playersList.Count; i++)
-        {
-            if (playersList[i].ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber) continue;
-            
-            GameObject prefabToSpawn = PhotonNetwork.IsMasterClient ? hostPrefab : playerPrefab;
-            var go = PhotonNetwork.Instantiate(prefabToSpawn.name, Vector3.zero, Quaternion.identity);
-            networkPlayers.Add(go.GetComponent<NetworkPlayer>());
-        }
-    }
-
-
-    // public void KillPlayer(PhotonView playerView)
+    [SerializeField] private GameObject _playerCanvas;
+    [SerializeField] private GameObject _hostCanvas;
+    // private void Start()
     // {
-    //     for (var i = 0; i < playersList.Count; i++)
-    //     {
-    //         if (playersList[i].ActorNumber != playerView.Controller.ActorNumber) continue;
-    //         playersControllers[i].KillPlayer();
-    //         break;
-    //     }
+    //      Debug.Log("Players Placed");
+    //      var players = GameObject.FindGameObjectsWithTag("Player");
+    //      var host = GameObject.FindGameObjectWithTag("Host");
+    //      
+    //      if(players.Length != 0)
+    //      {
+    //          foreach (var player in players)
+    //          {
+    //              player.transform.SetParent(_playerCanvas.transform, false);
+    //          }
+    //      }
+    //      host.transform.SetParent(_hostCanvas.transform, false);
     // }
 
     public void RestartGame()

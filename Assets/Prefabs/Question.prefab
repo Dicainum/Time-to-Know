@@ -58,6 +58,7 @@ MonoBehaviour:
   overrideTimer: 0
   _withImage: 0
   sprite: {fileID: 0}
+  points: 0
 --- !u!1 &3053941424570661733
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,8 +187,9 @@ GameObject:
   - component: {fileID: 3731064258313529976}
   - component: {fileID: 2275694898352883079}
   - component: {fileID: 8270233783174198442}
+  - component: {fileID: 4511020034147705831}
   m_Layer: 5
-  m_Name: Button
+  m_Name: AnswerButton
   m_TagString: AnswerButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,6 +313,29 @@ MonoBehaviour:
   _answerBtn: {fileID: 2275694898352883079}
   _playerAnswerText: {fileID: 514044242087574347}
   _questionWindow: {fileID: 3053941424570661733}
+  _playerID: 0
+--- !u!114 &4511020034147705831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579411966714110379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5358909372201032812
 GameObject:
   m_ObjectHideFlags: 0

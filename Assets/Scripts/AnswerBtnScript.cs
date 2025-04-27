@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Pun.UtilityScripts;
 
 
 public class AnswerBtnScript : MonoBehaviourPun
@@ -12,18 +13,23 @@ public class AnswerBtnScript : MonoBehaviourPun
     [SerializeField] private TMP_Text _playerAnswerText;
     [SerializeField] private GameObject _questionWindow;
     public int _playerID;
-    public void AnswerBtnClicked()
+    [PunRPC] public void AnswerBtnClicked()
     {
         if (!ifResetBeenCalled && _questionWindow.activeSelf)
         {
             _resetScript.ResetTimer();
             ifResetBeenCalled = true;
             PlayerAnswering();
-            _playerID = PhotonNetwork.LocalPlayer.ActorNumber;
+            _playerID = PhotonNetwork.LocalPlayer.GetPlayerNumber();
+            photonView.RPC("BroadcastPlayerClicked", RpcTarget.MasterClient, _playerID);
             Debug.Log($"Player ID: {_playerID}");
         }
     }
 
+    [PunRPC] public void BroadcastPlayerClicked(int playerID)
+    {
+        _playerID = playerID;
+    }
     public void ResetAnswerButton()
     {
         _answerBtn.interactable = true;

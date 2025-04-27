@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 1791849508826350673}
   - component: {fileID: -140778073033125926}
   - component: {fileID: -3657610358038410092}
+  - component: {fileID: 7793660705136672322}
   m_Layer: 5
   m_Name: Host
   m_TagString: Host
@@ -237,8 +238,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8261485441680283412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.748465}
-  m_LocalScale: {x: 1.8397, y: 1.8397, z: 1.8397}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8416324301752854424}
@@ -284,8 +285,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56df6b1f7351cea4286e6be74b3bdb42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
   playerName: 
   playerImage: {fileID: 0}
   points: 0
   textPoints: {fileID: 0}
+--- !u!114 &7793660705136672322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8261485441680283412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28dd60f6abf16d4094cf0f642a043e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1

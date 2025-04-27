@@ -13,6 +13,7 @@ public class QuestionWindow : MonoBehaviour
     public float overrideTimer;
     public bool _withImage = false;
     public Sprite sprite;
+    public int points;
 
     public void LoadQuestionWindow()
     {
@@ -32,7 +33,7 @@ public class QuestionWindow : MonoBehaviour
     public void EnablePicture()
     {
         _image.sprite = sprite;
-        _imageContainer.SetActive(true); //TODO: включать после вопроса
+        _imageContainer.SetActive(true); 
         
     }
 
