@@ -9,8 +9,6 @@ public class MenuLogic : MonoBehaviourPunCallbacks
 {
     
     private string gameVersion = "1";
-    [SerializeField] private GameObject _playerPrefab;
-    [SerializeField] private GameObject _hostPrefab;
     [SerializeField] private int maxPlayers = 4;
     [SerializeField] private TMP_InputField createdRoomField;
     [SerializeField] private TMP_InputField roomToJoinField;
@@ -85,27 +83,10 @@ public class MenuLogic : MonoBehaviourPunCallbacks
     {
         Debug.Log("Player Joined Room");
         playersText.text = "Players: " + PhotonNetwork.CurrentRoom.PlayerCount;
-        
     }
 
     public void StartGame()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            foreach (Player player in PhotonNetwork.PlayerList)
-            {
-                if (player.IsMasterClient)
-                {
-                    PhotonNetwork.Instantiate(_hostPrefab.name, Vector3.zero, Quaternion.identity);
-                    Debug.LogError("Host Spawned");
-                }
-                else
-                {
-                    PhotonNetwork.Instantiate(_playerPrefab.name, Vector3.zero, Quaternion.identity);
-                }
-            }
-        }
-
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.LoadLevel("GameScene");
