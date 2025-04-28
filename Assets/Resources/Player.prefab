@@ -402,7 +402,7 @@ MonoBehaviour:
   playerName: 
   playerImage: {fileID: 0}
   points: 0
-  textPoints: {fileID: 0}
+  textPoints: {fileID: 4103931778562566425}
   PlayerID: 0
 --- !u!114 &-3271914490318581104
 MonoBehaviour:
