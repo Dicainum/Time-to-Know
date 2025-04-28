@@ -40,7 +40,7 @@ public class AddPoints : MonoBehaviourPun
             }
         }
 
-        if (targetPlayer = null)
+        if (targetPlayer == null)
         {
             Debug.LogWarning("Player " + _playerID + " not found");
         }

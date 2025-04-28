@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
@@ -25,18 +26,39 @@ public class LobbyNetworkSettings : MonoBehaviourPun
         {
             if (playersList[i].ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber) continue;
 
-            
             GameObject prefabToSpawn = PhotonNetwork.IsMasterClient ? hostPrefab : playerPrefab;
-            GameObject canvasToAttach = PhotonNetwork.IsMasterClient ? hostCanvas : playerCanvas;
-
             var go = PhotonNetwork.Instantiate(prefabToSpawn.name, Vector3.zero, Quaternion.identity);
-            go.transform.SetParent(canvasToAttach.transform, false);
-
+            if (go.GetComponent<MyPlayerReference>() == null)
+            {
+                go.AddComponent<MyPlayerReference>();
+            }
             networkPlayers.Add(go.GetComponent<NetworkPlayer>());
             break;
         }
     }
 
+    [PunRPC]
+    public void SortButton()
+    {
+        photonView.RPC("Sort", RpcTarget.AllBufferedViaServer);
+    }
+    [PunRPC] private void Sort()
+    {
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var player in players)
+        {
+            player.transform.SetParent(playerCanvas.transform, false);
+        }
+        var host = GameObject.FindGameObjectWithTag("Host");
+        if (host != null)
+        {
+            host.transform.SetParent(hostCanvas.transform, false);
+        }
+        else
+        {
+            Debug.LogError("Host not found");
+        }
+    }
 
     // public void KillPlayer(PhotonView playerView)
     // {

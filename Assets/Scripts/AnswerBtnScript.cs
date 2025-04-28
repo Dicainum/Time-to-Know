@@ -24,11 +24,9 @@ public class AnswerBtnScript : MonoBehaviourPun
             PlayerAnswering();
 
             var localPlayerObject = PhotonView.Find(PhotonNetwork.LocalPlayer.ActorNumber);
-            Debug.LogError(localPlayerObject);
             if (localPlayerObject != null)
             {
-                var netPlayer = localPlayerObject.gameObject.GetComponent<NetworkPlayer>();
-                Debug.Log(netPlayer.gameObject.name);//TODO: Got NRE here
+                var netPlayer = MyPlayerReference.myNetworkPlayer;
                 int playerID = netPlayer.PlayerID;
 
                 photonView.RPC("BroadcastPlayerClicked", RpcTarget.AllBufferedViaServer, playerID);
