@@ -10,8 +10,10 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks
     public Sprite playerImage;
     public int points = 0;
     public TMP_Text textPoints;
+    public TMP_Text nicknameText;
     private PlayerNumbering _playerNumbering;
     public int PlayerID;
+    private GameObject[] _players;
 
     public void UpdatePoints()
     {
@@ -26,14 +28,47 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        if (players.Length > 0)
+        if (PhotonNetwork.IsMasterClient)
         {
-            for (int i = 0; i < players.Length; i++)
+            _players = GameObject.FindGameObjectsWithTag("Player");
+            if (_players.Length > 0)
             {
-                var netPlayer = players[i].GetComponent<NetworkPlayer>();
-                netPlayer.photonView.RPC("InitilizePlayerID", RpcTarget.AllBuffered, i);
+                for (int i = 0; i < _players.Length; i++)
+                {
+                    var netPlayer = _players[i].GetComponent<NetworkPlayer>();
+                    if (netPlayer != null && netPlayer.photonView != null)
+                    {
+                        netPlayer.photonView.RPC("InitilizePlayerID", RpcTarget.AllBuffered, i);
+                    }
+                }
             }
+        }
+    }
+
+    [PunRPC]
+    public void SynchNicknames()
+    {
+        photonView.RPC("SetNicknames", RpcTarget.AllBuffered);
+    }
+    [PunRPC] private void SetNicknames()
+    {
+        _players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var player in _players)
+        {
+            var netPlayer = player.GetComponent<NetworkPlayer>();
+            var nickname = player.GetComponent<PhotonView>().Owner.NickName;
+            netPlayer.playerName = nickname;
+            netPlayer.nicknameText.text = nickname;
+        }
+        
+        var host = GameObject.FindGameObjectsWithTag("Host");
+        
+        foreach (var player in host)
+        {
+            var netPlayer = player.GetComponent<NetworkPlayer>();
+            var nickname = player.GetComponent<PhotonView>().Owner.NickName;
+            netPlayer.playerName = nickname;
+            netPlayer.nicknameText.text = nickname;
         }
     }
 }

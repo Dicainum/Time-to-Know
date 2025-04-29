@@ -55,6 +55,8 @@ MonoBehaviour:
   - Sort
   - SortButton
   - SynchPoints
+  - SetNicknames
+  - SynchNicknames
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

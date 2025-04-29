@@ -13,6 +13,7 @@ public class LobbyNetworkSettings : MonoBehaviourPun
 
     [SerializeField] private GameObject playerCanvas;
     [SerializeField] private GameObject hostCanvas;
+    private NetworkPlayer _host;
     private List<Player> playersList;
     private List<NetworkPlayer> networkPlayers;
 
@@ -37,9 +38,18 @@ public class LobbyNetworkSettings : MonoBehaviourPun
         }
     }
 
+    private void Start()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            _host = GameObject.FindGameObjectWithTag("Host").GetComponent<NetworkPlayer>();
+        }
+    }
+
     [PunRPC]
     public void SortButton()
     {
+        _host.SynchNicknames();
         photonView.RPC("Sort", RpcTarget.AllBufferedViaServer);
     }
     [PunRPC] private void Sort()
@@ -50,13 +60,13 @@ public class LobbyNetworkSettings : MonoBehaviourPun
             player.transform.SetParent(playerCanvas.transform, false);
         }
         var host = GameObject.FindGameObjectWithTag("Host");
-        if (host != null)
+        if (host == null)
         {
-            host.transform.SetParent(hostCanvas.transform, false);
+            Debug.LogError("Host not found");
         }
         else
         {
-            Debug.LogError("Host not found");
+            host.transform.SetParent(hostCanvas.transform, false);
         }
     }
 

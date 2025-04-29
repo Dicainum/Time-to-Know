@@ -403,6 +403,7 @@ MonoBehaviour:
   playerImage: {fileID: 0}
   points: 0
   textPoints: {fileID: 4103931778562566425}
+  nicknameText: {fileID: 5450952443110845748}
   PlayerID: 0
 --- !u!114 &-3271914490318581104
 MonoBehaviour:
