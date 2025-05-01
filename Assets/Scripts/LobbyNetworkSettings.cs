@@ -14,11 +14,13 @@ public class LobbyNetworkSettings : MonoBehaviourPun
     [SerializeField] private GameObject playerCanvas;
     [SerializeField] private GameObject hostCanvas;
     private NetworkPlayer _host;
+    [SerializeField] private PlayerSort _playerSort;
     private List<Player> playersList;
     private List<NetworkPlayer> networkPlayers;
 
     [SerializeField] private GameObject _restartBtn;
-    
+    [SerializeField] private GameObject[] _hostGameObjects;
+
     private void Awake()
     {
         playersList = PhotonNetwork.PlayerList.ToList();
@@ -43,6 +45,13 @@ public class LobbyNetworkSettings : MonoBehaviourPun
         if (PhotonNetwork.IsMasterClient)
         {
             _host = GameObject.FindGameObjectWithTag("Host").GetComponent<NetworkPlayer>();
+        }       
+        else
+        {
+            foreach (var go in _hostGameObjects)
+            {
+                go.SetActive(false);
+            }
         }
     }
 
@@ -68,7 +77,10 @@ public class LobbyNetworkSettings : MonoBehaviourPun
         {
             host.transform.SetParent(hostCanvas.transform, false);
         }
+
+        _playerSort.SortChildrenByPlayerId();
     }
+
 
     // public void KillPlayer(PhotonView playerView)
     // {

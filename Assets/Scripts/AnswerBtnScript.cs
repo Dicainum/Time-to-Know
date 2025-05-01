@@ -1,53 +1,93 @@
+using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Photon.Pun;
-using Photon.Pun.UtilityScripts;
-
 
 public class AnswerBtnScript : MonoBehaviourPun
 {
     [SerializeField] private TimerScript _resetScript;
     private bool ifResetBeenCalled = false;
+
     [SerializeField] private Button _answerBtn;
     [SerializeField] private TMP_Text _playerAnswerText;
     [SerializeField] private GameObject _questionWindow;
-    public int _playerID;
-    [PunRPC]
-    public void AnswerBtnClicked()
+
+    public int _playerID = 0;
+    private NetworkPlayer[] _players;
+    private string name;
+
+    private void Start()
     {
-        if (!ifResetBeenCalled && _questionWindow.activeSelf)
+        ResetAnswerButton();
+    }
+
+    public void OnAnswerButtonClicked()
+    {
+        if (_questionWindow.activeSelf)
         {
-            _resetScript.ResetTimer();
-            ifResetBeenCalled = true;
-
-            PlayerAnswering();
-
             var localPlayerObject = PhotonView.Find(PhotonNetwork.LocalPlayer.ActorNumber);
             if (localPlayerObject != null)
             {
                 var netPlayer = MyPlayerReference.myNetworkPlayer;
                 int playerID = netPlayer.PlayerID;
-
-                photonView.RPC("BroadcastPlayerClicked", RpcTarget.AllBufferedViaServer, playerID);
+                photonView.RPC("SendClickToMaster", RpcTarget.MasterClient, playerID);
             }
         }
     }
+    
+    [PunRPC]
+    public void SendClickToMaster(int playerID, PhotonMessageInfo info)
+    {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
 
-    [PunRPC] public void BroadcastPlayerClicked(int playerID)
+        if (!ifResetBeenCalled)
+        {
+            ifResetBeenCalled = true;
+            _playerID = playerID;
+
+            photonView.RPC("BroadcastPlayerClicked", RpcTarget.AllBufferedViaServer, playerID);
+        }
+    }
+    
+    [PunRPC]
+    public void BroadcastPlayerClicked(int playerID)
     {
         _playerID = playerID;
+        FindNickname();
+        PlayerAnswering();
     }
+    
     public void ResetAnswerButton()
     {
         _answerBtn.interactable = true;
         ifResetBeenCalled = false;
-        _playerAnswerText.text = "Answer";
+        _playerAnswerText.text = "Answer"; 
     }
 
+
+    private void FindNickname()
+    {
+        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+        _players = playerObjects
+            .Select(go => go.GetComponent<NetworkPlayer>())
+            .Where(np => np != null)
+            .ToArray();
+
+        foreach (var player in _players)
+        {
+            if (player.PlayerID == _playerID)
+            {
+                name = player.playerName;
+                break;
+            }
+        }
+    }
+    
     private void PlayerAnswering()
     {
         _answerBtn.interactable = false;
-        _playerAnswerText.text = "Answering..."; //playerName + 
+        _playerAnswerText.text = name + " is Answering...";
     }
 }

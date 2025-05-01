@@ -10,6 +10,7 @@ public class AddPoints : MonoBehaviourPun
     [SerializeField] private QuestionWindow _question;
     public int points;
     [SerializeField] private int _playerID;
+    [SerializeField] private int _multiplier = 1;
     private NetworkPlayer[] _players;
 
     
@@ -46,7 +47,7 @@ public class AddPoints : MonoBehaviourPun
         }
         else
         {
-            points = _question.points;
+            points = _question.points * _multiplier;
             targetPlayer.points += points;
             SyncAllPlayersPoints();
         }

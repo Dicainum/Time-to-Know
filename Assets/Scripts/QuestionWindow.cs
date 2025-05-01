@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class QuestionWindow : MonoBehaviour
 {
     public string question;
+    public string answer;
     [SerializeField] private TMP_Text _text;
+    [SerializeField] private TMP_Text _answerField;
     [SerializeField] private GameObject _imageContainer;
     [SerializeField] private GameObject _questionContainer;
     [SerializeField] private Image _image;
@@ -17,6 +19,7 @@ public class QuestionWindow : MonoBehaviour
 
     public void LoadQuestionWindow()
     {
+        _answerField.text = question;
         _text.text = question;
         _questionContainer.SetActive(true);
         if(_withImage )

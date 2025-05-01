@@ -34,13 +34,14 @@ public class TimerScript : MonoBehaviourPun
         else
         {
             timerText.text = "00:00";
-            TimerEnd(); // local call, no RPC needed
+            TimerEnd();
         }
     }
 
     [PunRPC]
     public void ResetTimer()
     {
+        Debug.LogWarning("ResetTimer");
         remainingTime = 11f;
         timerEnded = false;
     }
@@ -63,7 +64,7 @@ public class TimerScript : MonoBehaviourPun
     }
     
 
-    private void TimerEnd() // Removed [PunRPC] because it's called locally
+    private void TimerEnd()
     {
         if (_randomScript != null && remainingTime <= -0.5f && !timerEnded)
         {
@@ -76,7 +77,7 @@ public class TimerScript : MonoBehaviourPun
             else
             {
                 _questionWindow.SetActive(false);
-                ResetTimer(); // Local reset
+                ResetTimer(); 
                 _answerButtonScript.ResetAnswerButton();
             }
         }

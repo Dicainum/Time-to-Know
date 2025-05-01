@@ -35,6 +35,14 @@ public class questionButton : MonoBehaviourPun
         _question.question = _questionSO.question;
         _question.LoadQuestionWindow();
         _question.points = _pointsAmount;
+        if (_questionSO.answer != null)
+        {
+            _question.answer = _questionSO.answer;
+        }
+        else
+        {
+            _question.answer = "No answer";
+        }
         gameObject.SetActive(false);
     }
 }
