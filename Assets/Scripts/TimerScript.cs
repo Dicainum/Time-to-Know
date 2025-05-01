@@ -55,7 +55,7 @@ public class TimerScript : MonoBehaviourPun
     [PunRPC]
     public void HostResumeTimer()
     {
-        photonView.RPC("ResumeTimer", RpcTarget.All);
+        photonView.RPC("ResumeTimer", RpcTarget.AllViaServer);
     }
 
     [PunRPC] public void ResumeTimer()
@@ -69,17 +69,29 @@ public class TimerScript : MonoBehaviourPun
         if (_randomScript != null && remainingTime <= -0.5f && !timerEnded)
         {
             timerEnded = true;
+            ResetInAnswer();
+        }
+    }
 
-            if (!_questionWindow.activeSelf)
-            {
-                _randomScript.SelectRandomButton();
-            }
-            else
-            {
-                _questionWindow.SetActive(false);
-                ResetTimer(); 
-                _answerButtonScript.ResetAnswerButton();
-            }
+    [PunRPC]
+    public void CallResetInAnser()
+    {
+        photonView.RPC("ResetInAnswer", RpcTarget.AllViaServer);
+
+    }
+
+    [PunRPC] 
+    public void ResetInAnswer()
+    {
+        if (!_questionWindow.activeSelf)
+        {
+            _randomScript.SelectRandomButton();
+        }
+        else
+        {
+            _questionWindow.SetActive(false);
+            ResetTimer();
+            _answerButtonScript.ResetAnswerButton();
         }
     }
 }

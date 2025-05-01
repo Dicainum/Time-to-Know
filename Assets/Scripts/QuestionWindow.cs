@@ -19,7 +19,7 @@ public class QuestionWindow : MonoBehaviour
 
     public void LoadQuestionWindow()
     {
-        _answerField.text = question;
+        _answerField.text = answer;
         _text.text = question;
         _questionContainer.SetActive(true);
         if(_withImage )

@@ -12,6 +12,7 @@ public class AddPoints : MonoBehaviourPun
     [SerializeField] private int _playerID;
     [SerializeField] private int _multiplier = 1;
     [SerializeField] private PointButtonController _buttonController;
+    [SerializeField] private TimerScript _timerScript;
     private NetworkPlayer[] _players;
 
     public void AddPointsToPlayer()
@@ -50,6 +51,7 @@ public class AddPoints : MonoBehaviourPun
             SyncAllPlayersPoints();
         }
 
+        _timerScript.CallResetInAnser();
         _buttonController.SetButtonsInactive();
     }
 

@@ -189,7 +189,7 @@ MonoBehaviour:
   question: 
   answer: 
   _text: {fileID: 3332616673684119291}
-  _answerField: {fileID: 5569586057253058399}
+  _answerField: {fileID: 5069227397884377525}
   _imageContainer: {fileID: 8619674888609926785}
   _questionContainer: {fileID: 3053941424570661733}
   _image: {fileID: 1340429421426302729}
@@ -452,6 +452,7 @@ MonoBehaviour:
   _answerBtn: {fileID: 2275694898352883079}
   _playerAnswerText: {fileID: 514044242087574347}
   _questionWindow: {fileID: 3053941424570661733}
+  _addPoints: {fileID: 0}
   _playerID: 0
 --- !u!114 &4511020034147705831
 MonoBehaviour:

@@ -4578,6 +4578,7 @@ MonoBehaviour:
   _playerID: 0
   _multiplier: 1
   _buttonController: {fileID: 1099840715}
+  _timerScript: {fileID: 260994674}
 --- !u!114 &1130197636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5447,6 +5448,7 @@ MonoBehaviour:
   _playerID: 0
   _multiplier: -2
   _buttonController: {fileID: 1099840715}
+  _timerScript: {fileID: 260994674}
 --- !u!114 &1249835555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6866,6 +6868,7 @@ MonoBehaviour:
   _playerID: 0
   _multiplier: -1
   _buttonController: {fileID: 1099840715}
+  _timerScript: {fileID: 260994674}
 --- !u!114 &1581326910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7579,6 +7582,7 @@ MonoBehaviour:
   _playerID: 0
   _multiplier: 2
   _buttonController: {fileID: 1099840715}
+  _timerScript: {fileID: 260994674}
 --- !u!1001 &1734651299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8940,7 +8944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5680086344608323704, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6588738375540392170, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_SizeDelta.x

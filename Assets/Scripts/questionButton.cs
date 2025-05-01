@@ -33,7 +33,6 @@ public class questionButton : MonoBehaviourPun
         _question.sprite = _questionSO.Image;
         _question._withImage = _questionSO.withImage;
         _question.question = _questionSO.question;
-        _question.LoadQuestionWindow();
         _question.points = _pointsAmount;
         if (_questionSO.answer != null)
         {
@@ -43,6 +42,7 @@ public class questionButton : MonoBehaviourPun
         {
             _question.answer = "No answer";
         }
+        _question.LoadQuestionWindow();
         gameObject.SetActive(false);
     }
 }
