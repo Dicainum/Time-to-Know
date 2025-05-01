@@ -12,6 +12,7 @@ public class AnswerBtnScript : MonoBehaviourPun
     [SerializeField] private Button _answerBtn;
     [SerializeField] private TMP_Text _playerAnswerText;
     [SerializeField] private GameObject _questionWindow;
+    [SerializeField] private PointButtonController _addPoints;
 
     public int _playerID = 0;
     private NetworkPlayer[] _players;
@@ -48,6 +49,8 @@ public class AnswerBtnScript : MonoBehaviourPun
             _playerID = playerID;
 
             photonView.RPC("BroadcastPlayerClicked", RpcTarget.AllBufferedViaServer, playerID);
+
+            _addPoints.SetButtonsActive();
         }
     }
     

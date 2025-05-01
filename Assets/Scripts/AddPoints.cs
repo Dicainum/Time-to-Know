@@ -11,11 +11,9 @@ public class AddPoints : MonoBehaviourPun
     public int points;
     [SerializeField] private int _playerID;
     [SerializeField] private int _multiplier = 1;
+    [SerializeField] private PointButtonController _buttonController;
     private NetworkPlayer[] _players;
 
-    
-
-    
     public void AddPointsToPlayer()
     {
         _playerID = _answerBtnScript._playerID;
@@ -31,7 +29,7 @@ public class AddPoints : MonoBehaviourPun
                 _players[i] = playersGO[i].GetComponent<NetworkPlayer>();
             }
         }
-        
+
         foreach (var player in _players)
         {
             if (player.PlayerID == _playerID)
@@ -51,7 +49,8 @@ public class AddPoints : MonoBehaviourPun
             targetPlayer.points += points;
             SyncAllPlayersPoints();
         }
-        
+
+        _buttonController.SetButtonsInactive();
     }
 
     private void SyncAllPlayersPoints()
