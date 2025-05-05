@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 100
   question: Can u suck a cock?
-  answer: yes
+  answer: no
   withImage: 1
   Image: {fileID: 6963322998463068953, guid: f677fbe61bb2ecd4ab251e3cee222f5c, type: 3}
   overrideTimer: 0

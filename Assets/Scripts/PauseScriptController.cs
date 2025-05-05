@@ -9,7 +9,7 @@ public class PauseScriptController : MonoBehaviourPun
     [SerializeField] private string playerText;
     [SerializeField] private TMP_Text text;
     [SerializeField] private GameObject pauseCanvas;
-    [SerializeField] private GameObject  _nicknameCanvas;
+    //[SerializeField] private GameObject  _nicknameCanvas;
     private void Awake()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -35,6 +35,6 @@ public class PauseScriptController : MonoBehaviourPun
     [PunRPC] public void DisablePause()
     {
         pauseCanvas.SetActive(false);
-        _nicknameCanvas.SetActive(false);
+        //_nicknameCanvas.SetActive(false);
     }
 }
