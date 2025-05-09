@@ -8,8 +8,9 @@ public class TimerScript : MonoBehaviourPun
     public float remainingTime;
     [SerializeField] private RandomBtnScript _randomScript;
     [SerializeField] private AnswerBtnScript _answerButtonScript;
-    private bool timerEnded = false;
+    public bool timerEnded = false;
     [SerializeField] private GameObject _questionWindow;
+    [SerializeField] private GameObject _pauseScreen;
 
     private void Start()
     {
@@ -46,11 +47,20 @@ public class TimerScript : MonoBehaviourPun
         timerEnded = false;
     }
 
+    [PunRPC] public void SendPauseTimer()
+    {
+        photonView.RPC("PauseTimer", RpcTarget.AllViaServer);
+        Debug.Log("Paused");
+    }
+
     [PunRPC]
     public void PauseTimer()
     {
         timerEnded = true;
+        _pauseScreen.SetActive(true);
     }
+
+    
 
     [PunRPC]
     public void HostResumeTimer()

@@ -12,6 +12,7 @@ public class PauseScriptController : MonoBehaviourPun
     [SerializeField] private TMP_Text text;
     [SerializeField] private GameObject pauseCanvas;
     [SerializeField] private Button pauseButton;
+    [SerializeField] private TimerScript timer;
     //[SerializeField] private GameObject  _nicknameCanvas;
     private void Awake()
     {

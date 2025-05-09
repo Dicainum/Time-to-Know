@@ -1283,7 +1283,9 @@ MonoBehaviour:
   remainingTime: 15
   _randomScript: {fileID: 260994677}
   _answerButtonScript: {fileID: 1102263014}
+  timerEnded: 0
   _questionWindow: {fileID: 404610288}
+  _pauseScreen: {fileID: 1400705105}
 --- !u!114 &260994675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2201,9 +2203,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400705106}
-        m_TargetAssemblyTypeName: PauseScriptController, Assembly-CSharp
-        m_MethodName: PressedPause
+      - m_Target: {fileID: 260994674}
+        m_TargetAssemblyTypeName: TimerScript, Assembly-CSharp
+        m_MethodName: SendPauseTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2211,7 +2213,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &352972299
 MonoBehaviour:
@@ -7786,6 +7788,7 @@ MonoBehaviour:
   text: {fileID: 1211876670}
   pauseCanvas: {fileID: 1400705105}
   pauseButton: {fileID: 352972298}
+  timer: {fileID: 260994674}
 --- !u!114 &1400705107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7847,7 +7850,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 39
   m_TargetDisplay: 0
 --- !u!224 &1400705110
 RectTransform:
