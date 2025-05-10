@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 20721f15ea693094cac210ca4addbea0
+guid: 8953557ae6ff0e344ac32ea9bf1c9ad1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8981200115925628964
-    second: scale_1200 (1)_0
+      213: -1270576158444989862
+    second: 39da7322-dd6a-4506-a8c5-29729632a7dd_0
+  - first:
+      213: -3942220725670653461
+    second: 39da7322-dd6a-4506-a8c5-29729632a7dd_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scale_1200 (1)_0
+      name: 39da7322-dd6a-4506-a8c5-29729632a7dd_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 0
-        width: 750
-        height: 754
+        width: 1019
+        height: 1019
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd74e89341e5c5380800000000000000
-      internalID: -8981200115925628964
+      spriteID: a525ec737b10e5ee0800000000000000
+      internalID: -1270576158444989862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 39da7322-dd6a-4506-a8c5-29729632a7dd_1
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 223
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be1d734032b6a49c0800000000000000
+      internalID: -3942220725670653461
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      scale_1200 (1)_0: -8981200115925628964
+      39da7322-dd6a-4506-a8c5-29729632a7dd_0: -1270576158444989862
+      39da7322-dd6a-4506-a8c5-29729632a7dd_1: -3942220725670653461
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
