@@ -122,6 +122,7 @@ public class MenuLogic : MonoBehaviourPunCallbacks
             PhotonNetwork.LeaveRoom();
         }
         backFromLobbyListBtnGO.SetActive(false);
+        waitTextGO.SetActive(false);
         scrollViewGO.SetActive(false);
         createBtnGO.SetActive(true);
         getRoomsBtnGO.SetActive(true);
