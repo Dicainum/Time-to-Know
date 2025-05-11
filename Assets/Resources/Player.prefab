@@ -400,11 +400,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  playerImage: {fileID: 0}
+  playerImage: {fileID: 2641901805272762046}
   points: 0
   textPoints: {fileID: 4103931778562566425}
   nicknameText: {fileID: 5450952443110845748}
   PlayerID: 0
+  _playerAvatars:
+  - {fileID: -2934603466937632792, guid: eb6771dc96c84344095ad9316cdb24de, type: 3}
+  - {fileID: 8897702890840254061, guid: cfcd0392b39362b46a9f7648da02faab, type: 3}
+  - {fileID: 2344929664864510937, guid: 7bba080e73e630841945e1711a676c85, type: 3}
+  - {fileID: 2344929664864510937, guid: 7bba080e73e630841945e1711a676c85, type: 3}
+  - {fileID: -2934603466937632792, guid: eb6771dc96c84344095ad9316cdb24de, type: 3}
 --- !u!114 &-3271914490318581104
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,16 +4,19 @@ using Photon.Pun;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.UI;
+
 public class NetworkPlayer : MonoBehaviourPunCallbacks
 {
     public string playerName = "";
-    public Sprite playerImage;
+    public Image playerImage;
     public int points = 0;
     public TMP_Text textPoints;
     public TMP_Text nicknameText;
     private PlayerNumbering _playerNumbering;
     public int PlayerID;
     private GameObject[] _players;
+    public Sprite[] _playerAvatars;
 
     public void UpdatePoints()
     {
@@ -49,6 +52,20 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks
     public void SynchNicknames()
     {
         photonView.RPC("SetNicknames", RpcTarget.AllBuffered);
+        photonView.RPC("SetPictirues", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC] private void SetPictirues()
+    {
+        _players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var player in _players)
+        {
+            var netPlayer = player.GetComponent<NetworkPlayer>();
+            var playerID = netPlayer.PlayerID;
+            Debug.Log(playerID);
+            Debug.Log(netPlayer._playerAvatars[0]);
+            netPlayer.playerImage.sprite = netPlayer._playerAvatars[playerID];
+        }
     }
     [PunRPC] private void SetNicknames()
     {

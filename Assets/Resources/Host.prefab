@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6525074405826731766, guid: e86e2e1929dfff64592ee5c7d185dab5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -291,6 +291,7 @@ MonoBehaviour:
   textPoints: {fileID: 0}
   nicknameText: {fileID: 4841559800128986135}
   PlayerID: 0
+  _playerAvatars: []
 --- !u!114 &7793660705136672322
 MonoBehaviour:
   m_ObjectHideFlags: 0

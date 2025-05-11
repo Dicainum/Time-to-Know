@@ -66,6 +66,7 @@ MonoBehaviour:
   - PausePressed
   - SendPauseTimer
   - CallSynchPoints
+  - SetPictirues
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
