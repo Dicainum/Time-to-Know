@@ -91,6 +91,7 @@ public class AnswerBtnScript : MonoBehaviourPun
     private void PlayerAnswering()
     {
         _answerBtn.interactable = false;
+        _resetScript.ResetTimer();
         _playerAnswerText.text = name + " is Answering...";
     }
 }
