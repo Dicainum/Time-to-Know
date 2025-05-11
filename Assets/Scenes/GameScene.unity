@@ -6693,6 +6693,7 @@ MonoBehaviour:
   _multiplier: 1
   _buttonController: {fileID: 1099840715}
   _timerScript: {fileID: 260994674}
+  _lobbyNetworkSettings: {fileID: 1580604925}
 --- !u!114 &1130197636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7738,6 +7739,7 @@ MonoBehaviour:
   _multiplier: -2
   _buttonController: {fileID: 1099840715}
   _timerScript: {fileID: 260994674}
+  _lobbyNetworkSettings: {fileID: 1580604925}
 --- !u!114 &1249835555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9520,6 +9522,7 @@ MonoBehaviour:
   _multiplier: -1
   _buttonController: {fileID: 1099840715}
   _timerScript: {fileID: 260994674}
+  _lobbyNetworkSettings: {fileID: 1580604925}
 --- !u!114 &1581326910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10882,6 +10885,7 @@ MonoBehaviour:
   _multiplier: 2
   _buttonController: {fileID: 1099840715}
   _timerScript: {fileID: 260994674}
+  _lobbyNetworkSettings: {fileID: 1580604925}
 --- !u!1001 &1734651299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12645,19 +12649,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 975.8732
+      value: 1024.6
       objectReference: {fileID: 0}
     - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 652.6151
+      value: 685.1962
       objectReference: {fileID: 0}
     - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 31
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4511020034147705831, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: sceneViewId

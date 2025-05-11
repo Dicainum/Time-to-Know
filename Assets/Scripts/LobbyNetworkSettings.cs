@@ -17,6 +17,7 @@ public class LobbyNetworkSettings : MonoBehaviourPun
     [SerializeField] private PlayerSort _playerSort;
     private List<Player> playersList;
     private List<NetworkPlayer> networkPlayers;
+    private NetworkPlayer[] _players;
 
     [SerializeField] private GameObject _restartBtn;
     [SerializeField] private GameObject[] _hostGameObjects;
@@ -97,5 +98,30 @@ public class LobbyNetworkSettings : MonoBehaviourPun
         if (!PhotonNetwork.IsMasterClient) return;
         PhotonNetwork.DestroyAll();
         PhotonNetwork.LoadLevel("RestartScene");
+    }
+    
+    [PunRPC] public void CallSynchPoints(int[] allPoints)
+    {
+        photonView.RPC("SynchPoints", RpcTarget.AllBuffered, allPoints);
+    }
+    
+    [PunRPC] private void SynchPoints(int[] allPoints)
+    {
+        if (_players == null || _players.Length == 0)
+        {
+            var playersGO = GameObject.FindGameObjectsWithTag("Player");
+            _players = new NetworkPlayer[playersGO.Length];
+            for (int i = 0; i < playersGO.Length; i++)
+            {
+                _players[i] = playersGO[i].GetComponent<NetworkPlayer>();
+            }
+        }
+
+        for (int i = 0; i < _players.Length; i++)
+        {
+            _players[i].points = allPoints[i];
+            _players[i].UpdatePoints();
+        }
+        Debug.Log("Synched");
     }
 }

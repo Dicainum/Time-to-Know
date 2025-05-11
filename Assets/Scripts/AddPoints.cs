@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using Unity.VisualScripting;
@@ -13,6 +14,7 @@ public class AddPoints : MonoBehaviourPun
     [SerializeField] private int _multiplier = 1;
     [SerializeField] private PointButtonController _buttonController;
     [SerializeField] private TimerScript _timerScript;
+    [SerializeField] private LobbyNetworkSettings _lobbyNetworkSettings;
     private NetworkPlayer[] _players;
 
     public void AddPointsToPlayer()
@@ -64,7 +66,7 @@ public class AddPoints : MonoBehaviourPun
             allPoints[i] = _players[i].points;
         }
 
-        photonView.RPC("SynchPoints", RpcTarget.AllBuffered, allPoints);
+        _lobbyNetworkSettings.CallSynchPoints(allPoints);
     }
 
     [PunRPC]
@@ -85,6 +87,7 @@ public class AddPoints : MonoBehaviourPun
             _players[i].points = allPoints[i];
             _players[i].UpdatePoints();
         }
+        Debug.Log("Synched");
     }
     
     
