@@ -43,7 +43,7 @@ public class TimerScript : MonoBehaviourPun
     public void ResetTimer()
     {
         Debug.LogWarning("ResetTimer");
-        remainingTime = 11f;
+        remainingTime = 26f;
         timerEnded = false;
     }
 
