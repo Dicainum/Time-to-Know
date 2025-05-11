@@ -12645,15 +12645,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 967.063
+      value: 975.8732
       objectReference: {fileID: 0}
     - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 487.75
+      value: 652.6151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 3906284541025968812, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.4994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4511020034147705831, guid: bc410bfa32fc8244daa8d45b79242500, type: 3}
       propertyPath: sceneViewId
