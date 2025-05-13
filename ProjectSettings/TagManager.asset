@@ -11,6 +11,7 @@ TagManager:
   - Host
   - PlayerCanvas
   - HostCanvas
+  - Theme
   layers:
   - Default
   - TransparentFX
