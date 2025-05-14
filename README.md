@@ -8,3 +8,7 @@
 ```
 ##If you'd like to go as player, you can also play in web: https://dicainum.itch.io/time-to-know
 ```
+### Best to play in fullscreen!
+
+## Show who are the smartest!
+> The game was released in a test build with the support of users Dicainum, Rymaka.
